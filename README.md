@@ -11,19 +11,8 @@ Database (PostgreSQL with Persistent Volume)
 
 Ingress (for external access)
 ===============================================
-multi-tier-app/
-├── Chart.yaml          # Helm chart metadata
-├── values.yaml         # Default configuration
-├── templates/          # Kubernetes manifests
-│   ├── frontend/
-│   │   ├── deployment.yaml
-│   │   ├── service.yaml
-│   │   └── ingress.yaml
-│   ├── backend/
-│   │   ├── deployment.yaml
-│   │   └── service.yaml
-│   └── database/
-│       ├── statefulset.yaml
-│       ├── service.yaml
-│       └── pvc.yaml
-└── requirements.yaml   # Dependencies (if any)
+![image](https://github.com/user-attachments/assets/3a5fb1f2-455f-43e4-aa62-4d83daf9cabd)
+
+
+![image](https://github.com/user-attachments/assets/50611e94-181f-4446-885b-1d4792afea0f)
+

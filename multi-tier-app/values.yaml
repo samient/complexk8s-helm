@@ -3,38 +3,38 @@ frontend:
   replicaCount: 2
   image:
     repository: nginx
-    tag: "1.23"
-    pullPolicy: IfNotPresent
+    tag: latest
   service:
     type: ClusterIP
     port: 80
   ingress:
     enabled: true
-    host: "app.example.com"
-    className: "nginx"
+    host: app.example.com
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
 
 # Backend Configuration
 backend:
   replicaCount: 3
   image:
-    repository: myorg/node-api
-    tag: "latest"
-    pullPolicy: Always
+    repository: myapp/api
+    tag: v1.0.0
   service:
     type: ClusterIP
     port: 3000
-  environment:
-    DB_HOST: "postgres-service"
-    DB_PORT: "5432"
 
 # Database Configuration
 database:
   image:
     repository: postgres
-    tag: "15-alpine"
-  storage:
+    tag: 13-alpine
+  service:
+    port: 5432
+  persistence:
+    enabled: true
     size: 10Gi
-    storageClass: "standard"
+    storageClass: standard
   credentials:
-    username: "admin"
-    password: "securepassword123"
+    username: admin
+    password: securepassword
+    dbname: appdb

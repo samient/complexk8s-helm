@@ -1,6 +1,6 @@
 # Frontend Configuration
 frontend:
-  replicaCount: 2
+  replicaCount: 1
   image:
     repository: nginx
     tag: latest

@@ -1,0 +1,40 @@
+# Frontend Configuration
+frontend:
+  replicaCount: 1
+  image:
+    repository: nginx
+    tag: latest
+  service:
+    type: ClusterIP
+    port: 80
+  ingress:
+    enabled: true
+    host: app.example.com
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+
+# Backend Configuration
+backend:
+  replicaCount: 3
+  image:
+    repository: myapp/api
+    tag: v1.0.0
+  service:
+    type: ClusterIP
+    port: 3000
+
+# Database Configuration
+database:
+  image:
+    repository: postgres
+    tag: 13-alpine
+  service:
+    port: 5432
+  persistence:
+    enabled: true
+    size: 10Gi
+    storageClass: standard
+  credentials:
+    username: admin
+    password: securepassword
+    dbname: appdb

@@ -1,0 +1,13 @@
+steps:
+  - name: gcr.io/buildpacks/builder
+    args:
+      - pack
+      - build
+      - gcr.io/$PROJECT_ID/my-app-image
+      - --builder=gcr.io/buildpacks/builder:v1
+      - --publish
+    env:
+      - GOOGLE_RUNTIME_VERSION=18
+
+images:
+  - gcr.io/$PROJECT_ID/my-app-image
